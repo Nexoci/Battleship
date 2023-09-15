@@ -4,8 +4,12 @@
 import random, time
 
 global slots
+guessed_spots = []
 grid = ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"] 
 #slots = ["A1","A2","A3","A4","A5","B1","B2","B3","B4","B5","C1","C2","C3","C4","C5","D1","D2","D3","D4","D5","E1","E2","E3","E4","E5",]
+
+ship_hits = 0
+
 
 def shiplocation():
     global ship1
@@ -58,10 +62,18 @@ def guess():
         column = playerguess[0]
         row = int(playerguess[1])
     finalguess = gridvalues[column] + (row-1)*5
+    print(ship_hits)
+    if finalguess in guessed_spots:
+        print("You already guessed this spot. Try again.")
+    else:
+        # Add the guessed spot to the list
+        guessed_spots.append(finalguess)
+        
     if finalguess == 0:
         if ship1==6 or ship2 ==6:
             grid[0] = "[X]"
             print("HIT!")
+            
         else:
             grid[0] = "[O]"
             print("Miss")
@@ -234,6 +246,8 @@ def guess():
         print("GAME OVER!")
         done = True
     
+
+    
     time.sleep(1)
    
 
@@ -246,5 +260,4 @@ done = False
 while not done:    
     board()
     guess()
-    print('\x1bc')
-
+    #print('\x1bc')
