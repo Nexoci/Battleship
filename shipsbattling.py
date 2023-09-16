@@ -69,8 +69,13 @@ def guess():
     gridvalues = dict({"A":0, "B":1, "C":2, "D":3, "E":4, "a":0, "b":1, "c":2, "d":3, "e":4})
     playerguess= input("Enter Guess: ")
     # Check if the input is in the correct format (e.g., "A1")
-    if len(playerguess) != 2 or not playerguess[1].isdigit() or int(playerguess[1]) < 1 or int(playerguess[1]) > 5:
+    if len(playerguess) != 2 or not playerguess[1].isdigit():
         print("Invalid guess. Please enter a valid guess in the format like 'A1', 'B2', etc.")
+        turns=turns-1
+        time.sleep(1)
+        return
+    if int(playerguess[1]) < 1 or int(playerguess[1]) > 5:
+        print("Wow! Thats not even in the ocean try again")
         turns=turns-1
         time.sleep(1)
         return
