@@ -21,6 +21,10 @@ grid = ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[
 
 ship_hits = 0
 
+GREEN = "\033[92m"
+RED = "\033[91m"
+RESET = "\033[0m"
+
 #Function to randomly generate ship locations
 def shiplocation():
     global ship1
@@ -76,15 +80,15 @@ def guess():
     gridvalues = dict({"A":0, "B":1, "C":2, "D":3, "E":4, "a":0, "b":1, "c":2, "d":3, "e":4})
     playerguess= input("Enter Guess: ")
     # Check if the input is in the correct format (e.g., "A1")
-    if len(playerguess) != 2 or not playerguess[1].isdigit():
-        print("Invalid guess. Please enter a valid guess in the format like 'A1', 'B2', etc.")
+    if len(playerguess) != 2 or not playerguess[1].isdigit() or playerguess[0] not in gridvalues:
+        print(RED + "Invalid guess. Please enter a valid guess in the format like 'A1', 'B2', etc.")
         turns=turns-1
-        time.sleep(1)
+        time.sleep(1.5)
         return
     if int(playerguess[1]) < 1 or int(playerguess[1]) > 5:
         print("Wow! Thats not even in the ocean try again")
         turns=turns-1
-        time.sleep(1)
+        time.sleep(1.5)
         return
     if len(playerguess) == 2:
         column = playerguess[0]
@@ -95,7 +99,7 @@ def guess():
     if finalguess == 0:
         if ship1==6 or ship2 ==6:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -104,7 +108,7 @@ def guess():
                 ship_hits = ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -114,7 +118,7 @@ def guess():
     elif finalguess == 1:
         if ship1==9 or ship2 ==9:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -123,7 +127,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -133,7 +137,7 @@ def guess():
     elif finalguess == 2:
         if ship1==9 or ship2 ==9:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -142,7 +146,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -152,7 +156,7 @@ def guess():
     elif finalguess == 3:
         if ship1==4 or ship2 ==4:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -161,7 +165,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -171,7 +175,7 @@ def guess():
     elif finalguess == 4:
         if ship1==3 or ship2 ==3:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -180,7 +184,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -190,7 +194,7 @@ def guess():
     elif finalguess == 5:
         if ship1==6 or ship2 ==6:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -199,7 +203,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -209,7 +213,7 @@ def guess():
     elif finalguess == 6:
         if ship1==1 or ship2 ==1:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -218,7 +222,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -228,7 +232,7 @@ def guess():
     elif finalguess == 7:
         if ship1==1 or ship2 ==1:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -237,7 +241,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -247,7 +251,7 @@ def guess():
     elif finalguess == 8:
         if ship1==4 or ship2 ==4:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -256,7 +260,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -266,7 +270,7 @@ def guess():
     elif finalguess == 9:
         if ship1==3 or ship2 ==3:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -275,7 +279,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -285,7 +289,7 @@ def guess():
     elif finalguess == 10:
         if ship1==7 or ship2 ==7:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -294,7 +298,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -304,7 +308,7 @@ def guess():
     elif finalguess == 11:
         if ship1==7 or ship2 ==7:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -313,7 +317,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -323,7 +327,7 @@ def guess():
     elif finalguess == 12:
         if ship1==7 or ship2 ==7:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -332,7 +336,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -342,7 +346,7 @@ def guess():
     elif finalguess == 13:
         if ship1==7 or ship2 ==7:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -351,7 +355,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -361,7 +365,7 @@ def guess():
     elif finalguess == 14:
         if ship1==3 or ship2 ==3:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -370,7 +374,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -380,7 +384,7 @@ def guess():
     elif finalguess == 15:
         if ship1==2 or ship2 ==2:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -389,7 +393,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -399,7 +403,7 @@ def guess():
     elif finalguess == 16:
         if ship1==10 or ship2 ==10:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -408,7 +412,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -418,7 +422,7 @@ def guess():
     elif finalguess == 17:
         if ship1==10 or ship2 ==10:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -427,7 +431,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -437,7 +441,7 @@ def guess():
     elif finalguess == 18:
         if ship1==10 or ship2 ==10:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -446,7 +450,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -455,7 +459,7 @@ def guess():
                 
     elif finalguess == 19:
         if finalguess in guessed_spots:
-            print("You already guessed this spot. Try again.")
+            print(RED + "You already guessed this spot. Try again.")
             turns=turns-1
         else:
             guessed_spots.append(finalguess)
@@ -466,7 +470,7 @@ def guess():
     elif finalguess == 20:
         if ship1==2 or ship2 ==2:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -475,7 +479,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -485,7 +489,7 @@ def guess():
     elif finalguess == 21:
         if ship1==8 or ship2 ==8:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -494,7 +498,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -504,7 +508,7 @@ def guess():
     elif finalguess == 22:
         if ship1==8 or ship2 ==8:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -513,7 +517,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -523,7 +527,7 @@ def guess():
     elif finalguess == 23:
         if ship1==5 or ship2 ==5:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -532,7 +536,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -542,7 +546,7 @@ def guess():
     elif finalguess == 24:
         if ship1==5 or ship2 ==5:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -551,7 +555,7 @@ def guess():
                 ship_hits =ship_hits+1
         else:
             if finalguess in guessed_spots:
-                print("You already guessed this spot. Try again.")
+                print(RED + "You already guessed this spot. Try again.")
                 turns=turns-1
             else:
                 guessed_spots.append(finalguess)
@@ -562,7 +566,7 @@ def guess():
     if ship_hits == 4 and ((ship1 == 1 or ship1 == 2 or ship1 == 4 or ship1 == 5 or ship1 == 6 or ship1 == 8 or ship1 == 9) and (ship2 == 1 or ship2 == 2 or ship2 == 4 or ship2 == 5 or ship2 == 6 or ship2 == 8 or ship2 == 9)):
         turns=turns-1
         board()
-        print("You WIN!")
+        print(GREEN + "You WIN!")
         if turns == 4:
             print(f"Flawless Victory in {turns} tries")
         else:
@@ -573,7 +577,7 @@ def guess():
     if ship_hits == 5 and ((ship1 == 1 or ship1 == 2 or ship1 == 4 or ship1 == 5 or ship1 == 6 or ship1 == 8 or ship1 == 9) and (ship2 == 10 or ship2 == 3)):
         turns=turns-1
         board()
-        print("You WIN!")
+        print(GREEN + "You WIN!")
         if turns == 5:
             print(f"Flawless Victory in {turns} tries")
         else:
@@ -584,7 +588,7 @@ def guess():
     if ship_hits == 5 and ((ship2 == 1 or ship2 == 2 or ship2 == 4 or ship2 == 5 or ship2 == 6 or ship2 == 8 or ship2 == 9) and (ship1 == 10 or ship1 == 3)):
         turns=turns-1
         board()
-        print("You WIN!")
+        print(GREEN + "You WIN!")
         if turns == 5:
             print(f"Flawless Victory in {turns} tries")
         else:
@@ -595,7 +599,7 @@ def guess():
     if ship_hits == 6 and ((ship2 == 1 or ship2 == 2 or ship2 == 4 or ship2 == 5 or ship2 == 6 or ship2 == 8 or ship2 == 9) and (ship1 == 7)):
         turns=turns-1
         board()
-        print("You WIN!")
+        print(GREEN + "You WIN!")
         if turns == 6:
             print(f"Flawless Victory in {turns} tries")
         else:
@@ -606,7 +610,7 @@ def guess():
     if ship_hits == 6 and ((ship1 == 1 or ship1 == 2 or ship1 == 4 or ship1 == 5 or ship1 == 6 or ship1 == 8 or ship1 == 9) and (ship2 == 7)):
         turns=turns-1
         board()
-        print("You WIN!")
+        print(GREEN + "You WIN!")
         if turns == 6:
             print(f"Flawless Victory in {turns} tries")
         else:
@@ -617,7 +621,7 @@ def guess():
     if ship_hits == 7 and ((ship2 == 10 or ship2 == 3) and (ship1 == 7)):
         turns=turns-1
         board()
-        print("You WIN!")
+        print(GREEN + "You WIN!")
         if turns == 7:
             print(f"Flawless Victory in {turns} tries")
         else:
@@ -628,7 +632,7 @@ def guess():
     if ship_hits == 7 and ((ship1 == 10 or ship1 == 3) and (ship2 == 7)):
         turns=turns-1
         board()
-        print("You WIN!")
+        print(GREEN + "You WIN!")
         if turns == 7:
             print(f"Flawless Victory in {turns} tries")
         else:
@@ -636,16 +640,17 @@ def guess():
         time.sleep(5)
         done= True
     
-    if turns == 11:
-        print("GAME OVER!")
-        print(f"Unfortunately you used all {turns} tries and lost")
-        time.sleep(5)
-        done = True
+    if not done:
+        if turns == 12:
+            print(RED + "GAME OVER!")
+            print(f"Unfortunately you used all {turns} tries and lost")
+            time.sleep(5)
+            done = True
         
     
 
     
-    time.sleep(1)
+    time.sleep(1.5)
    
 #Call the introduction and ship location functions
 intro()
